@@ -25,14 +25,15 @@ else:
 
 # Using "switch" statement
 # Determine the grade.
+# Using "match-case" statement determining the grade.
 match score:
-    case int(score) if score >= A_score:
+    case _ if score >= A_score:
         print('Your grade is A.')
-    case int(score) if score >= B_score:
+    case _ if score >= B_score:
         print('Your grade is B.')
-    case int(score) if score >= C_score:
+    case _ if score >= C_score:
         print('Your grade is C.')
-    case int(score) if score >= D_score:
+    case _ if score >= D_score:
         print('Your grade is D.')
     case _:
         print('Your grade is F.')
