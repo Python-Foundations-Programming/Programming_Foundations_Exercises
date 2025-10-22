@@ -1,34 +1,41 @@
+# Programming Exercise 5-18
+
 # main function
 def main():
 
-    # Get user input for amount, interest rate and months.
-    amount = float(input('Enter the loan amount: '))
+    # Local variables to hold user input
+    presentValue = 0.0
+    interestRate = 0.0
+    months = 0
+    futureValue = 0.0
+
+    # Get user input for specific values
+    presentValue = float(input('Enter the present value '
+                               'of the account in dollars: '))
     
-    rate = float(input('Enter the monthly interest ' \
-                       'rate as a percentage: '))
+    interestRate = float(input('Enter the monthly interest '
+                               'rate as a  percentage: '))
     
     months = int(input('Enter the number of months: '))
 
-    # Use function to determine monthly payment amount.
-    payment = calculate_payment(amount, rate, months)
+    # Get expected future value of the account
+    futureValue = getFutureValue(presentValue, interestRate, months)
 
-    # Display the results.
-    print('\nLoan Amount: $', format(amount, ',.2f'), sep='')
-    print('Monthly Interest: ', format(rate, '.2f'), '%', sep='')
-    print('Payment Months:', months)
-    print('\nMonthly Payment Amount: $', format(payment, ',.2f'), sep='')
+    print('The information for your account is:')
+    print(f'Present value: ${presentValue:.2f}')
+    print(f'Interest Rate: {interestRate:.2%}')
+    print(f'After {months} months, the value of your account will be $'
+          f'{futureValue:,.2f}')
 
-
-# The calculate_payment function receives the loan amount, the 
-# interest rate percentage, and the number of months in which to pay
-# off the loan, and returns the necessary monthly payment amount. 
-def calculate_payment(A, R, M):
-    # Convert interest percentage to a decimal.
-    dR = R / 100
-
-    # Calculate and return payment amount.
-    return (dR * A) / (1 - (1 + dR) ** -M)
-
+# The getFutureValue function receives the present value, the 
+# interest percentage, and the number of months that the money will 
+# be in the account, and returns the future value of the account. 
+def getFutureValue(P, interest, t):
+    # Define local variable
+    F = 0.0
+    i = interest / 100 # write the percentage as a fraction
+    F = P * ((1 + i) **t)
+    return F
 
 # Call the main function.
 main()

@@ -1,19 +1,21 @@
+# Programming Exercise 9-8
+
 import pickle
 
-# Global constants for menu choices.
-DISPLAY = 1
+# Global constants for menu choices
+LOOK_UP = 1
 ADD = 2
 CHANGE = 3
 DELETE = 4
 QUIT = 5
 
-# Global constant for filename.
-FILENAME = 'vegetables.dat'
+# Global constent for filename
+FILENAME = 'emails.dat'
 
-# The main function.
+# main function
 def main():
-    # Get vegetable data dictionary.
-    data = load_data()
+    # Get email dictionary.
+    emails = load_emails()
 
     # Initialize variable for user choice.
     choice = 0
@@ -23,131 +25,118 @@ def main():
 
         choice = get_user_choice()
 
-        if choice == DISPLAY:
-            display(data)
+        if choice== LOOK_UP:
+            look_up(emails)
         elif choice == ADD:
-            add(data)
+            add(emails)
         elif choice == CHANGE:
-            change(data)
+            change(emails)
         elif choice == DELETE:
-            delete(data)
+            delete(emails)
 
     # Pickle the resulting dictionary.
-    save_data(data)
+    save_emails(emails)
 
     print('Information saved.')
-
     
-def load_data():
+def load_emails():
     try:
         # Open the file.
-        input_file = open(FILENAME, 'rb')
+        with open(FILENAME, 'rb') as input_file:
+            # Unpickle the dictionary.
+            email_dict = pickle.load(input_file)
 
-        # Unpickle the dictionary.
-        veg_dict = pickle.load(input_file)
-
-        # Close the file.
-        input_file.close()
-        
     # Could not open file.
     except IOError:
         # Create empty dictionary.
-        veg_dict = {}
+        email_dict = {}
 
     # Return the dictionary.
-    return veg_dict
-
+    return email_dict
 
 def get_user_choice():
-    # Display menu, get user choice, and validate it.
+    # Display menu, get user choice, and validate it
     print()
     print('Menu')
     print('----------------------------------------')
-    print('1. Display current vegetables and prices')
-    print('2. Add a vegetable and price')
-    print('3. Change the price of an existing vegetable')
-    print('4. Delete a vegetable and price')
+    print('1. Look up an email address')
+    print('2. Add a new name and email address')
+    print('3. Change an existing email address')
+    print('4. Delete a name and email address')
     print('5. Quit the program')
     print()
 
     choice = int(input('Enter your choice: '))
 
     # Validate the choice.
-    while choice < DISPLAY or choice > QUIT:
-        choice = int(input('The choice you entered is invalid. ' \
+    while choice < LOOK_UP or choice>QUIT:
+        choice = int(input('The choice you entered is invalid. '
                            'Please enter a valid choice: '))
 
     # Return user's choice.
     return choice
 
+def look_up(emails):
+    # Get a name to look up.
+    name = input('Enter a name: ')
 
-def display(data):
-    # Check if data is empty.
-    if not data:
-        print('No data currently saved.')
+    # Look name up in the dictionary.
+    if name in emails:
+        print(f' Name: {name}')
+        print(f'Email: {emails[name]}')
     else:
-        # Display the current data.
-        print('Current vegetables and prices:')
-        for veg, price in data.items():
-            print(' - ', veg, ' ($', format(price, '.2f'), \
-                  ')', sep='')
-        
+        print('The specified name was not found.')
 
+def add(emails):
+    # Get name and email address.
+    name = input('Enter name: ')
+    address = input('Enter email address: ')
 
-def add(data):
-    # Get vegetable name and price.
-    name = input('Enter vegetable name: ')
-    price = float(input('Enter price: '))
-
-    # Add new vegetable if name does not exist.
+    # Add new address if name does not exist.
     # Otherwise, notify user that name exists.
-    if name not in data:
-        data[name] = price
-        print('New vegetable and price added.')
+    if name not in emails:
+        emails[name] = address
+        print('Name and address have been added.')
     else:
-        print('That vegetable already exists.')
+        print('That name already exists.')
 
+def change(emails):
+    # Get name to update information.
+    name = input('Enter name: ')
 
-def change(data):
-    # Get vegetable name to update price.
-    name = input('Enter vegetable name: ')
-
-    # Change price if vegetable name exists.
+    # Change address if name exists.
     # Otherwise, notify user that name does not exist.
-    if name in data:
-        price = float(input('Enter price: '))
-        data[name] = price
-        print('Vegetable price updated.')
-    else:
-        print('The specified vegetable was not found.')
+    if name in emails:
+        address = input('Enter the new address: ')
+        emails[name] = address
+        print('Information updated.')
+    else: # name not found
+        print('The specified name was not found.')
 
+def delete(emails):
+    # Get name to delete.
+    name = input('Enter name: ')
 
-def delete(data):
-    # Get vegetable name to delete.
-    name = input('Enter vegetable name: ')
+    if name in emails:
 
-    # Delete vegetable and price if name exists.
-    # Otherwise, notify user that name does not exist.
-    if name in data:
-        del data[name]
-        print('Vegetable and price deleted.')
-    else:
-        print('The specified vegetable was not found.')
+        del emails[name]
+        print('Information deleted.')
 
+    else: # name not found
+        print('The specified name was not found.')
 
 # Function pickles the specified dictionary
-# and saves it to the vegetables file.
-def save_data(data):
+# and saves it to the emails file.
+def save_emails(emails):
     # Open the file for writing.
     output_file = open(FILENAME, 'wb')
 
     # Pickle the dictionary and save it.
-    pickle.dump(data, output_file)
+    pickle.dump(emails, output_file)
 
     # Close the file.
     output_file.close()
 
-
 # Call the main function.
-main()
-
+if __name__ == '__main__':
+    main()

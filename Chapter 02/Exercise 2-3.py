@@ -1,9 +1,17 @@
-# Get the number of pounds.
-pounds = input('Enter a value in pounds: ')
+# Programming Exercise 2-3
 
-# Calculate the amount of kilograms.
-kilos = float(pounds) * 0.454
+# Variables to hold the size of the tract and number of acres.
+tractSize = 0.0
+acres = 0.0
 
-# Print the result.
-print(pounds, 'pounds is', format(kilos, '.2f'), 'kilograms.')
+# Constant for the number of square feet in an acre.
+SQ_FEET_PER_ACRE = 43560
 
+# Get the square feet in the tract.
+tractSize = input('Enter the number of square feet in the tract: ')
+
+# Calculate the acreage.
+acres = float(tractSize) / SQ_FEET_PER_ACRE
+
+# Print the number of acres.
+print (f'The size of that tract is {acres:.2f} acres.')

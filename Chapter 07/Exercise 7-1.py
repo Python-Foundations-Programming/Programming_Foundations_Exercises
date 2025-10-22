@@ -1,27 +1,25 @@
-# The main function.
+# Programming Exercise 7-1
+
 def main():
-    # Declare local variables.
-    numbers = [74, 19, 105, 20, -2, 67, 77, 124, -45, 38]
-    total = 0
+    # Variables
+    total_sales = 0.0
 
-    # Start with an empty list.
-    valid_numbers = []
+    # Initialize lists
+    daily_sales = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    days_of_week = ['Sunday', 'Monday', 'Tuesday',
+                    'Wednesday', 'Thursday', 'Friday',
+                    'Saturday']
 
-    # Loop through the numbers list and append values
-    # between 0 and 100 to the valid_numbers list.
-    # Also add the number to the total if it is valid.
-    for num in numbers:
-        if num >= 0 and num <= 100:
-            valid_numbers.append(num)
-            total += num
+    for i in range(7):
+        daily_sales[i] = float(input('Enter the sales for '
+                                     + days_of_week[i] + ': '))
 
-    # Calculate the average.
-    average = total / len(valid_numbers)
-    
-    # Display the results.
-    print('Total of valid numbers:', total)
-    print('Average of valid numbers:', \
-          format(average, '.4f'))
+    for number in daily_sales:
+        total_sales += number
+
+    # Display total sales
+    print (f'Total sales for the week: ${total_sales:,.2f}')
 
 # Call the main function.
-main()
+if __name__ == '__main__':
+    main()

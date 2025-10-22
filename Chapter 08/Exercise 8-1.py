@@ -1,20 +1,17 @@
-# The main function.
+# Programming Exercise 8-1
+
 def main():
-    # Receive user input.
-    first_name = input ('Enter your first name: ')
-    last_name = input ('Enter your last name: ')
+    # Receive user input
+    full_name = input ('Enter your full name: ')
 
-    # Display the results.
-    print('\nInitials: ', first_name[0].upper(), '.', \
-          last_name[0].upper(), '.', sep='')
+    # Split according to spaces
+    name = full_name.split()
 
-    print('Name in Address Book: ', first_name[0].upper(), \
-          first_name[1:], ' ', last_name.upper(), sep='')
-
-    print('Username: ', first_name[0].lower(), \
-          last_name.lower(), sep='')
-
+    # The first character of each name is an initial
+    for string in name:
+        print(string[0].upper(), sep='', end='')
+        print('.', sep=' ', end='')
 
 # Call the main function.
-main()
-
+if __name__ == '__main__':
+    main()

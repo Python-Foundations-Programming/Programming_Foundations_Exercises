@@ -1,11 +1,13 @@
-# Print table heading.
-print ('Miles\tKilometers')
-print ('------------------')
+# Programming Exercise 4-6
 
-# Repeat for 10, 20, 30, 40, 50, 60, 70, and 80.
-for miles in range(10, 81, 10):
-    # Calculate the value in kilometers.
-    kilometers = round(miles * 1.60934, 2)
+# Declare a variable to hold the temperature
+# in degrees Fahrenheit.
+fahrenheit = 0.0
 
-    # Print row of data.
-    print(miles, '\t', kilometers, sep='')
+# Calculate and print value for each temperature.
+print ('Celsius\t\tFahrenheit')
+print ('------------------------------------------')
+
+for celsiusDegree in range(21):
+    fahrenheit = ((9 * celsiusDegree) / 5) + 32
+    print (celsiusDegree, '\t\t', fahrenheit)

@@ -1,39 +1,52 @@
-# The main function.
+# Programming Exercise 8-8
+
 def main():
-    # Local variables
-    counter = 0
-    total_length = 0
-    longest_word = ''    
+    # Get the string as input from the user.
+    user_string = input('Enter a string for the program '
+                        'to capitalize sentences: ')
 
-    # Open input file
-    infile = open('words.txt', 'r')
+    # Call the capitalize function, storing the result.
+    result = capitalize(user_string)
 
-    # Read numbers from the file while keeping count 
-    # and a running total
-    for word in infile:
-        # Strip line break from end of word and get its length.
-        word = word.rstrip('\n')
-        word_length = len(word)
+    # Display the result.
+    print(result)
 
-        # Add length to total length and increment the counter.
-        total_length += word_length
-        counter += 1
+# The capitalize method receives a string and returns
+# the same string with the first letters of all
+# sentences capitalized
+def capitalize(string):
+    # Initialize variables
+    result = ''
+    new_sentence = True
+    result_word = ''
 
-        # Check for longest word.
-        if word_length > len(longest_word):
-            longest_word = word
+    # Obtain all the words in the string.
+    words = string.split()
 
-    # Close the file.
-    infile.close()
+    # For each word in the string:
+    for item in words:
+       # The word is the beginning of a new sentence.
+        if new_sentence:
+            # Create new word where first letter is capitalized.
+            result_word = item[0].upper() + item[1:]
+        else:
+            # Do nothing.
+            result_word = item
 
-    # Determine average length.
-    average_length = total_length / counter
-    
-    # Display the results.
-    print('Number of Words:', counter)
-    print('Longest Word:', longest_word)
-    print('Average Word Length:', round(average_length))
+        # Add resulting word to the string.
+        result = result + result_word + ' '
 
+        # If the last character in the word indicates 
+        # the end of a sentence, set flag to ensure
+        # that next word will be treated as new sentence.
+        if item[-1] == '.' or item[-1] == '?' or item[-1] == '!':
+            new_sentence = True
+        else:
+            new_sentence = False
+
+    # Return the result.
+    return result
 
 # Call the main function.
-main()
+if __name__ == '__main__':
+    main()

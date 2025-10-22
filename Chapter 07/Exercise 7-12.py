@@ -1,39 +1,33 @@
-# The main function.
+# The prime_or_composite function accepts an integer
+# and displays a message indicating whether the value
+# is a prime number or a composite number.
+
+def prime_or_composite(n):
+    has_divisor = False
+    
+    for i in range(2, n):
+        if n % i == 0:
+            has_divisor = True
+
+    if has_divisor:
+        print(f'{n} is composite.')
+    else:
+        print(f'{n} is prime.')
+
 def main():
-    try:
-        # Get the file name.
-        file_name = input('Enter the name of the file: ')
-        
-        # Open the specified file for reading.
-        infile = open(file_name, 'r')
+    # Get an integer from the user.
+    user_num = int(input('Enter an integer greater than 1: '))
 
-        # Read all data from the file into a list of strings.
-        data = infile.readlines()
-            
-        # Close the file.
-        infile.close()
+    # Create an empty list.
+    numbers = []
+    
+    # Populate the list with numbers.
+    for count in range(2, user_num + 1):
+        numbers.append(count)
 
-        # Display number of lines in program.
-        print('The file contains', len(data), 'line(s).')
+    # Determine whether each element is prime or composite.
+    for i in range(len(numbers)):
+        prime_or_composite(numbers[i])
 
-        # Get the line number
-        line_number = int(input('Enter the line number: '))
-
-        # Display the line.
-        line = data[line_number - 1] # Subtract 1 to match index.
-        print('Line', line_number, 'is:\n', line)
-
-    # Handle exceptions.
-    except IOError:
-        print('An error occurred while trying to read the file.')
-
-    except ValueError:
-        print('Invalid input: Enter an integer.')
-
-    except IndexError:
-        print('Invalid line number.')
-
-
-# Call the main function.
-main()
-
+if __name__ == '__main__':
+    main()

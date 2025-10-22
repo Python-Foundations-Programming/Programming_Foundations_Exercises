@@ -1,31 +1,37 @@
-import random
+# Programming Exercise 9-5
 
-# The main function.
 def main():
+    # Set up empty dictionary
+    counter = {}
 
-    # Initialize an empty dictionary.
-    number_dict = dict()
+    # Get the name of the input file.
+    input_name = input('Enter the name of the input file: ')
+    text = ''
 
-    # Repeat 100 times.
-    for i in range(100):
-        # Generate a random number between 1 and 10.
-        random_number = random.randint(1, 10)
+    # Get input text
+    with open(input_name, 'r') as input_file:
+        text = input_file.read()
+    
+    # Split the text into words.
+    words = text.split()
 
-        # Establish or increment the number in the dictionary.
-        if random_number not in number_dict:
-            number_dict[random_number] = 1            
-        else:
-            number_dict[random_number] += 1
+    # Add each unique word to dictionary with a counter of 0
+    unique_words = set(words)
+    for word in unique_words:
+        counter[word] = 0
 
-    # Display the results.
-    print('Number\tFrequency')
-    print('------  ---------')
+    # For each word in the text increase its counter in the dictionary
+    for item in words:
+        counter[item] += 1
 
-    # The "sorted" function produces a sorted version of
-    # the list of key-value pairs from the "items" method.
-    for number, frequency in sorted(number_dict.items()):
-        print(number, frequency, sep='\t')
-         
+    # Display results
+    print(f'{"Word":15}\t{"Occurrences":15}')
+    print('----------------------------------------------')
+    while len(counter)>0:
+
+        pair = counter.popitem()
+        print(f'{pair[0]:15}{pair[1]:<15}')
 
 # Call the main function.
-main()
+if __name__ == '__main__':
+    main()

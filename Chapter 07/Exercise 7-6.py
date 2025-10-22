@@ -1,33 +1,44 @@
-import random
+# Programming Exercise 7-6
 
-
-# The main function.
 def main():
-    # Get input from user.
-    number_of_dice = int(input('Enter a positive integer: '))
+    # Declare local variables
+    number = 5
+    number_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    # Call the roll function, passing it number_of_dice.
-    dice_list = roll(number_of_dice)
+    # Display the number.
+    print('Number:', number)
 
-    # Display the result.
-    print(dice_list)
+    # Display the list of numbers.
+    print('List of numbers:')
+    print(f'{number_list}')
+    
+    # Display the list of numbers that are larger
+    # than the number.
+    print(f'List of numbers that are larger than {number}:')
+    
+    # Call the display_larger_than_n_list function,
+    # passing a number and number list as arguments.
+    display_larger_than_n_list(number, number_list)
 
+# The display_larger_than_n_list function accepts two arguments:
+# a list, and a number. The function displays all of the numbers
+# in the list that are greater than the number.
+def display_larger_than_n_list(n, n_list):
+    # Declare an empty list.
+    larger_than_n_list = []
 
-# The roll function accepts a number (num) and will return
-# a sorted list of num random numbers between 1 and 6.
-def roll(num):
-    # Start with an empty list.
-    dice = []
+    # Loop through the values in the list.
+    for value in n_list:
+        
+        # Determine if a value is greater than n.
+        if value > n:
+            
+            # If so, append the value to the list.
+            larger_than_n_list.append(value)
 
-    # Repeat num times.
-    for i in range(num):
-        # Append a random number between 1 and 6 to the list.
-        dice.append(random.randint(1, 6))
-
-    # Sort the list and then return it.
-    dice.sort()    
-    return dice
-
-
+    # Display the list.
+    print(larger_than_n_list)
+        
 # Call the main function.
-main()
+if __name__ == '__main__':
+    main()
