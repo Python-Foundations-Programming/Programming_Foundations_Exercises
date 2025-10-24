@@ -1,16 +1,20 @@
-# Get the number for the month.
-month = int(input('Enter a number (1-12) for the month: '))
+# Programming Exercise 3-3
 
-# Determine the quarter of the year and display it.
-if month >= 1 and month <= 3:
-    print('First Quarter')
-elif month >= 4 and month <= 6:
-    print('Second Quarter')
-elif month >= 7 and month <= 9:
-    print('Third Quarter')
-elif month >= 10 and month <= 12:
-    print('Fourth Quarter')
+# Get the person's age.
+age = int(input('Enter age: '))
+
+# Determine if the person is an infant, child,
+# teenager, or adult, and display the result.
+if age <= 1:
+    print('Infant')
+elif age > 1 and age < 13:
+    print('Child')
+elif age > 13 and age < 20:
+    print('Teenager')
 else:
-    print('Error: Please enter a number between 1 and 12.')
+    print ('Adult')
+
+
+
 
 

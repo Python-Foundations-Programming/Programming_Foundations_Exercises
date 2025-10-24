@@ -1,24 +1,23 @@
-# The main function.
+# Programming Exercise 6-8
+
 def main():
-    # Get the number of words to write to the file.
-    word_count = int(input('Enter number of words to write: '))
+    # Local variables
+    counter = 0
+    total = 0
+    number = 0    
 
-    # Open output file.
-    outfile = open('words.txt', 'w')
+    # Open input file
+    with open('random_numbers.txt', 'r') as inputFile:
+        # Read numbers from the file while keeping count 
+        # and a running total
+        for line in inputFile:
+            number = int(line)
+            total += number
+            counter += 1
 
-    # Write specified number of random numbers to the file.
-    for counter in range(1, word_count + 1):
-        # Get a word.
-        print('Word', counter, 'of', word_count, '- ', end='')
-        word = input('Enter a word: ')
-
-        # Write the word to the file.
-        outfile.write(word + '\n')
-
-    # Close the file.
-    outfile.close()
-
+    print(f'Total: {total:,}')
+    print(f'{counter} numbers were read from the file.')
 
 # Call the main function.
-main()
-
+if __name__ == '__main__':
+    main()

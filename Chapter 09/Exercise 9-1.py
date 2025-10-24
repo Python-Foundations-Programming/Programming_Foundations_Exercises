@@ -1,35 +1,28 @@
-# The main function.
+# Programming Exercise 9-1
+
 def main():
-    # Initialize dictionaries.
-    mean_radius = {'io':1821.6, 'europa':1560.8, \
-                   'ganymede':2634.1, 'callisto':2410.3}
+    # Initialize dictionaries
+    rooms = {'CS101':3004, 'CS102':4501, 'CS103':6755,
+             'NT110':1244, 'CM241':1411}
 
-    surface_gravity = {'io':1.796, 'europa':1.314, \
-                       'ganymede':1.428, 'callisto':1.235}
+    instructors = {'CS101':'Haynes', 'CS102':'Alvarado',
+                   'CS103':'Rich', 'NT110':'Burke',
+                   'CM241':'Lee'}
 
+    times = {'CS101':'8:00 am', 'CS102':'9:00 am',
+             'CS103':'10:00 am', 'NT110':'11:00 am',
+             'CM241':'12:00 pm'}
 
-    orbital_period = {'io':1.769, 'europa':3.551, \
-                      'ganymede':7.154, 'callisto':16.689}
+    course = input('Enter a course number: ')
 
-
-
-    # Get input from user.
-    moon = input('Enter name of Galilean moon of Jupiter: ')
-
-    # Convert to lowercase for reliable matching in dictionaries.
-    moon = moon.lower()
-
-    # Show error message if name does not exist.
-    # Otherwise, display details of specified moon.
-    if moon not in mean_radius:
-        print(moon.title(), 'is an invalid moon name.')
+    if course not in rooms:
+        print(f'{course} is an invalid course number.')
     else:
-        print('Details of', moon.title(), 'are:')
-        print('Mean Radius:', mean_radius[moon], 'km')
-        print('Surface Gravity:', surface_gravity[moon], 'm/s²')
-        print('Orbital Period:', orbital_period[moon], 'days')
-
+        print(f'The details for course {course} are:')
+        print(f'Room: {rooms[course]}')
+        print(f'Instructor: {instructors[course]}')
+        print(f'Time: {times[course]}')
 
 # Call the main function.
-main()
-
+if __name__ == '__main__':
+    main()

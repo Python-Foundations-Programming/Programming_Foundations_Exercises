@@ -1,35 +1,33 @@
-# Declare variables for the fastest lap time,
-# slowest lap time, and total lap time.
-fastest = None
-slowest = None
+# Programming Exercise 4-3
+
+# Declare variables to store the budget amount,
+# amount spent, difference, and total.
+budget = 0.0
+difference = 0.0
+spent = 1.0         #initialize for while loop
 total = 0.0
+    
+# Get the budgeted amount from the user.
+budget = float(input('Enter amount budgeted for the month: '))
 
-# Get number of laps.
-laps = int(input('Enter number of laps: '))
+# Get the total amount spent from the user.
+while spent != 0:
+    spent = float(input('Enter an amount spent(0 to quit): '))
+    #add to total
+    total += spent
 
-# Repeat for each lap.
-for lap in range(1, laps + 1):
-
-    # Get lap time.
-    print('\nLap', lap, 'of', laps)
-    lap_time = float(input('Enter lap time: '))
-
-    # Check if lap is fastest so far.
-    if fastest == None or lap_time < fastest:
-        fastest = lap_time
-
-    # Check if lap is slowest so far.    
-    if slowest == None or lap_time > slowest:
-        slowest = lap_time
-
-    # Keep running total of lap times.
-    total += lap_time
-
-# Print fastest, slowest and average lap time.
-print('\nFastest Lap Time:', fastest)
-print('Slowest Lap Time:', slowest)
-print('Average Lap Time:', round(total / laps, 2))
-
-
-
-
+# Determine whether the user is over or under budget,
+# and display the result.
+print (f'Budgeted: ${budget:,.2f}')
+print (f'Spent: ${total:,.2f}')
+    
+if budget > total:
+    difference = budget - total
+    print (f'You are ${difference:.2f} '
+           f'under budget. WELL DONE!')
+elif budget < total:
+    difference = total - budget
+    print (f'You are ${difference:,.2f} '
+           f'over budget. PLAN BETTER NEXT TIME!')
+else:
+    print ('Spending matches budget. GOOD PLANNING!')

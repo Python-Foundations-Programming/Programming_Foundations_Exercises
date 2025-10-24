@@ -1,19 +1,27 @@
-# Get the number.
-number = int(input('Enter an integer: '))
+# Programming Exercise 3-1
 
-# Determine if the number is positive, negative or zero.
-if number > 0:
-    print('Positive')
-elif number < 0:
-    print('Negative')
-else:
-    print('Zero')
+# Get the number for the day of the week.
+day = int(input('Enter a number (1-7) for the day of the week: '))
 
-# Determine if the number is even or odd.
-if number % 2 == 0:
-    print('Even')
+# Determine the name of the day of the week, and display it.
+if day == 1:
+    print('Monday')
+elif day == 2:
+    print('Tuesday')
+elif day == 3:
+    print('Wednesday')
+elif day == 4:
+    print ('Thursday')
+elif day == 5:
+    print ('Friday')
+elif day == 6:
+    print ('Saturday')
+elif day == 7:
+    print ('Sunday')
 else:
-    print('Odd')
-    
+    print ('Error: Please enter a number in the range 1-7.')
+
+
+
 
 

@@ -1,15 +1,14 @@
-# Import the math module.
-import math
+# Programming Exercise 2-9
 
-# Get radius from user.
-radius = float(input('Enter radius of circle: '))
+# Declare variables to hold the temperatures.
+celsius = 0.0
+fahrenheit = 0.0
 
-# Calculate area and circumference of circle.
-area = math.pi * radius ** 2
-circumference = 2 * math.pi * radius
+# Get the Celsius temperature.
+celsius = float(input('Enter a Celsius temperature: '))
 
-# Print the results.
-print('\nArea of circle:', format(area, '.2f'))
-print('Circumference of circle:', format(circumference, '.2f'))
+# Calculate the Fahrenheit equivalent.
+fahrenheit = (9.0 / 5.0) * celsius + 32
 
-
+# Display the Fahrenheit temperature.
+print (f'That is equal to {fahrenheit:.2f} degrees Fahrenheit.')

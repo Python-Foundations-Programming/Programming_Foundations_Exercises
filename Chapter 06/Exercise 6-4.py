@@ -1,40 +1,23 @@
-# The main function
+# Programming Exercise 6-4
+
 def main():
-    # Declare variables.
-    high_score = 0
-    high_scorer = ''
+    # Declare variables
+    line = ''
     counter = 0
 
-    # Open scores.txt file for reading.
-    infile = open('scores.txt', 'r')
-
-    # Priming read.
-    name = infile.readline()
-      
-    # Read in until no more data.
-    while name != '':
-        counter += 1 # Increment the counter.
-
-        # Read the score and convert it to an integer.
-        score = int(infile.readline())
-
-        # Check for high score.
-        if score > high_score:
-            high_score = score
-            high_scorer = name
-
-        # Read the name of the next record.
-        name = infile.readline()
+    # Open names.txt file for reading
+    with open('names.txt', 'r') as infile:
+        # Priming read
+        line = infile.readline()
         
-    # Close file.
-    infile.close()
-
-    # Display the results.
-    print('High Score:', high_score)
-    print('Held By:', high_scorer)
-    print('Number of Scores:', counter)
-
+        # Read in until no more data
+        while line != '':
+            counter += 1
+            line = infile.readline()
+    
+    # Display the number of names in the file
+    print (f'{counter} names were read.')
 
 # Call the main function.
-main()
-
+if __name__ == '__main__':
+    main()
