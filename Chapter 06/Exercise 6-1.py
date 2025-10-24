@@ -1,20 +1,23 @@
 # Programming Exercise 6-1
 
 def main():
-    # Declare local variables
-    contents = ''
-    
-    # Open numbers.txt file for reading
-    infile = open('numbers.txt', 'r')
+    try:
+        # Use a context manager to open and read the file
+        with open('Chapter 06/numbers.txt', 'r') as infile:
+            contents = infile.read()
+            tokens = contents.split()
 
-    # Read in data and store in content
-    contents = infile.read()
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
 
-    # Close file
-    infile.close()
+    else:
+        # Print contents after the file is closed
+        if not contents:
+            print("The file does not contain any data!")
+        else:
+            print(contents)
+            print("Count:", len(tokens))
 
-    # Print contents
-    print(contents)
 
 # Call the main function.
 if __name__ == '__main__':

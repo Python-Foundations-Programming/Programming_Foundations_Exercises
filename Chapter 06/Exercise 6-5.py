@@ -7,13 +7,14 @@ def main():
     number = 0.0
 
     # Open numbers.txt file for reading
-    with open('numbers.txt', 'r') as infile:
+    with open('Chapter 06/numbers.txt', 'r') as infile:
         for line in infile:
             number = float(line)
             total += number
-        
+
     # Display the total of the numbers in the file
     print(f'Total: {total}')
+
 
 # Call the main function.
 if __name__ == '__main__':
