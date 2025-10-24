@@ -12,12 +12,8 @@ def main():
             raise ValueError("No filename was entered!")
 
         # Ask for the number of random numbers to generate
-        try:
-            number_of_randoms = int(
-                input("Enter the number of random numbers to be written to the file: "))
-        except ValueError:
-            raise ValueError(
-                "Invalid input! Please enter an integer greater than zero.")
+        number_of_randoms = int(
+            input("Enter the number of random numbers to be written to the file: "))
 
         if number_of_randoms <= 0:
             raise ValueError(
